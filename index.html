@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background-color: #ffe6f7; /* Subtle pink background */
+            font-family: Arial, sans-serif;
+            overflow:hidden;
+        }
+        /* Container for image and buttons */
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background-color: #ffe6f7; /* Subtle pink background */
+           
+            width: 50%;
+        }
+
+        img {
+            max-width: 70%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+            display:flex;
+            width: 100%;
+            height: 120px; /* Restricts button movement */
+        }
+
+    h3 {
+    font-family: 'Dancing Script', cursive; /* Elegant script font */
+    font-size: 32px; /* Larger font size */
+    color: #ff66b2; /* Soft pink color */
+    margin-bottom: 20px; /* Space below the text */
+}
+
+    
+
+        button {
+            padding: 16px 32px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-width: 50%;
+            position:absolute;
+        }
+
+        .yes {
+            background-color: #ff2391; /* Light pink for the "Yes" button */
+            color: white;
+            left: 30%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .no {
+            background-color: #ff6666; /* Soft red for the "No" button */
+            color: white;
+            left: 50%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+      /* Popup container */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 80%;
+}
+
+.popup h2 {
+    color: #ff99cc; /* Light pink */
+    font-size: 24px;
+}
+
+.popup p {
+    font-size: 20px;
+    color: #ff6666; /* Soft red */
+}
+#heart {
+    font-size: 40px; /* Adjust the size of the heart */
+    color: #ff66b2; /* Soft pink color */
+    margin-top: 20px;
+
+}
+.hearts-row {
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 20px; 
+
+}
+
+.hearts-row span {
+    font-size: 40px; /* Adjust the size of the hearts */
+    color: #ff66b2; /* Soft pink color */
+    margin: 0 5px; /* Space between hearts */
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hearts-row">
+        <span>❤️</span>
+        <span>❤️</span>
+        <span>❤️</span>
+        <span>❤️</span>
+        <span>❤️</span>
+    </div>
+    <img src="./Images/image_1.jpg" class="image" id="mainImage">
+    
+        <h3> Will you be my Valentines?</h3>
+    
+    <div class="buttons">
+        <button class="yes" id="yesbtn">Yes</button>
+        <button class="no" id="nope">No</button>
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>Good choice! I'll see you 8PM friday.</h2>
+            <p id="countdown"></p>
+            <p id="heart">❤️</p> <!-- Heart icon here -->
+        </div>
+    </div>
+    
+</div>
+<script>
+    const nobtn= document.getElementById("nope");
+    const buttonsContainer = document.querySelector(".buttons");
+    const yesBtn = document.getElementById("yesbtn");
+    const image = document.getElementById("mainImage");
+    const containerRect = buttonsContainer.getBoundingClientRect();
+
+
+    let images = [
+            "./Images/image_1.jpg", 
+            "./Images/image_2.JPG",
+            "./Images/image_3.jpeg",
+            "./Images/image_4.jpg",
+            "./Images/image_5.jpeg",
+            "./Images/image_6.png",
+            "./Images/image_7.JPG"
+             // Replace with the second image
+        ];
+        let currentImageIndex = 0;
+        let yesButtonSize = 1;
+        
+    //move no button on hover 
+   nobtn.addEventListener("mouseover",function(){
+        const maxX = containerRect.width - nobtn.clientWidth;
+        const maxY = containerRect.height - nobtn.clientHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+   // nobtn.style.left = x + 'px';
+   // nobtn.style.top = y + 'px';
+
+   });
+    nobtn.addEventListener("click", function() {
+            // Increase size of Yes button
+            yesButtonSize += 0.4; // Increase scale by 0.2 each click
+            yesBtn.style.transform = `scale(${yesButtonSize})`;
+            // Swap images
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            image.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                image.src = images[currentImageIndex]; // Change image
+                image.style.opacity = 1; // Fade in
+            }, 300);
+        });
+
+        const popup = document.getElementById("popup");
+const countdownDisplay = document.getElementById("countdown");
+function updateCountdown() {
+    const now = new Date();
+    const targetDate = new Date('2025-02-14T20:00:00'); // 8 PM on 14th February
+
+    const timeRemaining = targetDate - now;
+
+    if (timeRemaining <= 0) {
+        countdownDisplay.innerHTML = "It's time!";
+    } else {
+        const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        
+        countdownDisplay.innerHTML = `${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+    }
+}
+
+// Show the popup when the "Yes" button is clicked
+yesBtn.addEventListener("click", function() {
+    popup.style.display = "flex"; // Show the popup
+
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+});
+</script>
+</body>
+</html>
