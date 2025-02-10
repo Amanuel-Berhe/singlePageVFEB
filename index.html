@@ -181,8 +181,8 @@
         let currentImageIndex = 0;
         let yesButtonSize = 1;
         
-    //move no button on hover 
-   nobtn.addEventListener("mouseover",function(){
+
+    nobtn.addEventListener("click", function() {
         const maxX = containerRect.width - nobtn.clientWidth;
         const maxY = containerRect.height - nobtn.clientHeight;
 
@@ -191,9 +191,6 @@
 
     nobtn.style.left = x + 'px';
     nobtn.style.top = y + 'px';
-
-   });
-    nobtn.addEventListener("click", function() {
             // Increase size of Yes button
             yesButtonSize += 0.4; // Increase scale by 0.2 each click
             yesBtn.style.transform = `scale(${yesButtonSize})`;
