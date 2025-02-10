@@ -12,11 +12,11 @@
             justify-content: center;
             height: 100vh;
             text-align: center;
-            background-color: #ffe6f7; /* Subtle pink background */
+            background-color: #ffe6f7;
             font-family: Arial, sans-serif;
             overflow:hidden;
         }
-        /* Container for image and buttons */
+        
         .container {
             position: relative;
             display: flex;
@@ -24,7 +24,7 @@
             align-items: center;
             justify-content: center;
             padding: 30px;
-            background-color: #ffe6f7; /* Subtle pink background */
+            background-color: #ffe6f7; 
            
             width: 50%;
         }
@@ -41,14 +41,14 @@
             position: relative;
             display:flex;
             width: 100%;
-            height: 120px; /* Restricts button movement */
+            height: 120px; 
         }
 
     h3 {
-    font-family: 'Dancing Script', cursive; /* Elegant script font */
-    font-size: 32px; /* Larger font size */
-    color: #ff66b2; /* Soft pink color */
-    margin-bottom: 20px; /* Space below the text */
+    font-family: 'Dancing Script', cursive; 
+    font-size: 32px;
+    color: #ff66b2; 
+    margin-bottom: 20px; 
 }
 
     
@@ -66,14 +66,14 @@
         }
 
         .yes {
-            background-color: #ff2391; /* Light pink for the "Yes" button */
+            background-color: #ff2391; 
             color: white;
             left: 30%;
             transition: transform 0.3s ease-in-out;
         }
 
         .no {
-            background-color: #ff6666; /* Soft red for the "No" button */
+            background-color: #ff6666; 
             color: white;
             left: 50%;
         }
@@ -81,15 +81,15 @@
         button:hover {
             opacity: 0.8;
         }
-      /* Popup container */
+      
 .popup {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5); 
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -105,17 +105,17 @@
 }
 
 .popup h2 {
-    color: #ff99cc; /* Light pink */
+    color: #ff99cc; 
     font-size: 24px;
 }
 
 .popup p {
     font-size: 20px;
-    color: #ff6666; /* Soft red */
+    color: #ff6666; 
 }
 #heart {
-    font-size: 40px; /* Adjust the size of the heart */
-    color: #ff66b2; /* Soft pink color */
+    font-size: 40px; 
+    color: #ff66b2; 
     margin-top: 20px;
 
 }
@@ -127,9 +127,9 @@
 }
 
 .hearts-row span {
-    font-size: 40px; /* Adjust the size of the hearts */
-    color: #ff66b2; /* Soft pink color */
-    margin: 0 5px; /* Space between hearts */
+    font-size: 40px; 
+    color: #ff66b2; 
+    margin: 0 5px; 
 }
 
     </style>
@@ -155,7 +155,7 @@
         <div class="popup-content">
             <h2>Good choice! I'll see you 8PM friday.</h2>
             <p id="countdown"></p>
-            <p id="heart">❤️</p> <!-- Heart icon here -->
+            <p id="heart">❤️</p> 
         </div>
     </div>
     
@@ -167,7 +167,7 @@
     const image = document.getElementById("mainImage");
     const containerRect = buttonsContainer.getBoundingClientRect();
 
-
+//AMANUEL BERHE JS//
     let images = [
             "./Images/image_1.jpg", 
             "./Images/image_2.JPG",
@@ -176,7 +176,7 @@
             "./Images/image_5.jpeg",
             "./Images/image_6.png",
             "./Images/image_7.JPG"
-             // Replace with the second image
+          
         ];
         let currentImageIndex = 0;
         let yesButtonSize = 1;
