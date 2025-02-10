@@ -181,16 +181,18 @@
         let currentImageIndex = 0;
         let yesButtonSize = 1;
         
-
-    nobtn.addEventListener("click", function() {
-        const maxX = containerRect.width - nobtn.clientWidth;
+     
+        function moveNoButton() {   const maxX = containerRect.width - nobtn.clientWidth;
         const maxY = containerRect.height - nobtn.clientHeight;
 
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
 
-    nobtn.style.left = x + 'px';
-    nobtn.style.top = y + 'px';
+    nobtn.style.position = "absolute"; // Ensure absolute positioning
+        nobtn.style.left = `${x}px`;
+        nobtn.style.top = `${y}px`;}
+    nobtn.addEventListener("click", function() {
+     
             // Increase size of Yes button
             yesButtonSize += 0.4; // Increase scale by 0.2 each click
             yesBtn.style.transform = `scale(${yesButtonSize})`;
@@ -202,7 +204,7 @@
                 image.style.opacity = 1; // Fade in
             }, 300);
         });
-
+        nobtn.addEventListener("mouseover", moveNoButton);
         const popup = document.getElementById("popup");
 const countdownDisplay = document.getElementById("countdown");
 function updateCountdown() {
